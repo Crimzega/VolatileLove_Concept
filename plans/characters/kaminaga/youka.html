@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Character Sheet | Youka Kaminaga</title>
+		<style>
+		body{
+			margin: 0;
+		}
+		#core-display{
+			display: grid;
+			grid-template-columns: repeat(13, 1fr);
+			min-height: 100%;
+		}
+		#core-display .char-info{
+			background-color: hsl(0, 0%, 85%);
+			grid-column-start: 4;
+			grid-column-end: 14;
+		}
+		#core-display .char-info dialog[open]{
+			background-color: transparent;
+			border-style: none;
+			position: initial;
+			margin: 0;
+			padding: 0;
+			min-height: 100%;
+			min-width: 100%;
+		}
+		#core-display .char-info dialog[open] .name-jp{
+			
+		}
+		#core-display .name-list{
+			background-color: hsl(0, 0%, 75%);
+			grid-column-start: 1;
+			grid-column-end: 4;
+		}
+		#core-display .name-list span{
+			background-color: hsl(0, 0%, 55%);
+			display: inline-block;
+			min-width: 100%;
+			font-size: 1.1rem;
+			padding-bottom: 0.2rem;
+			padding-top: 0.2rem;
+			text-align: center;
+		}
+		#core-display .name-list span:hover{
+			background-color: hsl(0, 0%, 80%);
+			cursor: pointer;
+		}
+		#core-display .name-list .names{
+			margin-top: 0.4rem;
+		}
+		#core-display .name-jp{
+			font-size: 1.4rem;
+			font-weight: bold;
+		}
+		</style>
+	</head>
+	<body>
+		<main id="core-display">
+			<article class="name-list">
+				<section class="names">
+					<span data-char-name="youka-kaminaga">Youka Kaminaga</span>
+				</section>
+			</article>
+			<article class="char-info">
+				<dialog data-char-name="youka-kaminaga">
+					<ruby data-char-name="youka-kaminaga" class="name-jp">
+						神長
+						<rp>(</rp>
+						<rt>Kaminaga</rt>
+						<rp>)</rp>
+						洋夏
+						<rp>(</rp>
+						<rt>Youka</rt>
+						<rp>)</rp>
+					</ruby>
+					
+				</dialog>
+			</article>
+		</main>
+		<script>
+		(() => {
+			document.querySelectorAll(`.info-handler`).forEach(elem => {
+				var dialogElem = document.querySelector(`dialog[data-char-name="${elem.dataset.charName}"`);
+				elem.addEventListener("click", function(){ dialogElem.show(); });
+			});
+			document.querySelector("dialog").show();
+		})();
+		</script>
+	</body>
+</html>
